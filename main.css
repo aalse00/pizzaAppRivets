@@ -1,0 +1,42 @@
+.container-fluid {
+  background-color: #e31837;
+  height: 100px;
+}
+
+.header {
+  background-color: white;
+  width: 100px;
+}
+
+.mainContainer {
+  display: flex;
+  margin-top: 10px;
+}
+
+.jumbotron {
+  background-color: cornsilk;
+  border: 1px solid rgba(0,0,0,);
+}
+
+.menu {
+  width: 640px;
+  background-color: cornsilk;
+}
+
+.col-md-8 {
+  background-color: aliceblue;
+}
+
+.bag {
+  background-color: cornsilk;
+  margin-left: 20px;
+  width: 540px;
+}
+
+.card-body {
+  background-color: aliceblue;
+}
+
+h3 {
+  text-align: left;
+}

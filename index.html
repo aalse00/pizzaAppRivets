@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>BHN Pizzas</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="main.css">
+<script src="node_modules/rivets/dist/rivets.bundled.min.js"></script>
+
+<body onload="loadImages()">
+<div id="container">
+    <div class="container-fluid">
+        <div class="header">
+            <img src="public/mod.png" alt="" style="height: 100px">
+            <img src="public/pizza.jpeg" alt="" style="height: 100px">
+        </div>
+
+    </div>
+    <div class="container mainContainer">
+
+        <div class="jumbotron">
+
+            <h3>{data.content.menu}</h3>
+            <hr>
+
+            <div class="card mb-3 menu" rv-each-product="data.products">
+                <div class="row no-gutters">
+
+                    <div class="col-md-4">
+                        <img src="" class="card-img-top" alt="...">
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card-body">
+
+                            <h3 rv-text="product.title"></h3>
+
+                            <span rv-html="product.price | formatPrice"></span>
+
+                            <button type="button" class="btn btn-success" rv-on-click="controller.addToBag">
+                                {data.content.addToBag}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="jumbotron card mb-3 bag">
+
+                <h3>{data.content.pizzaBag}</h3>
+
+                <p rv-hide="data.bag | getLength">
+                    {data.content.bagEmpty}
+                </p>
+
+                <hr>
+
+                <div class="row" rv-each-product="data.bag">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h5 class="card-title" rv-text="product.title"></h5>
+
+                                <button type="button" class="btn btn-danger" rv-on-click="controller.removeItem">
+                                    -
+                                </button>
+
+                                <button type="button" class="btn btn-info">
+                                    {data.content.quantity}
+                                    <span class="badge badge-light">{ product.quantity }</span>
+                                </button>
+
+                                <button type="button" class="btn btn-success" rv-on-click="controller.addItem">
+                                    +
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div rv-show="data.bag | getLength">
+
+                    <h3>{data.content.orderSummary}</h3>
+
+                    <div>
+                        <b>{data.content.price}: </b>
+                        <span rv-html="data.subtotal | formatPrice"></span>
+                    </div>
+
+                    <div>
+                        <b>{data.content.gst}: </b>
+                        <span rv-html="data.tax | formatPrice"></span>
+                    </div>
+
+                    <div>
+                        <b>{data.content.total}: </b>
+                        <span rv-html="data.total | formatPrice"></span>
+                    </div>
+
+                    <button type="button" class="btn btn-success" style="margin-top: 15px">
+                        {data.content.orderNow}
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
